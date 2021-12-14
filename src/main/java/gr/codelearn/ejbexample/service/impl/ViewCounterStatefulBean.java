@@ -1,18 +1,20 @@
 package gr.codelearn.ejbexample.service.impl;
 
 import gr.codelearn.ejbexample.service.ViewCounter;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateful;
 
 @Stateful
+@Slf4j
 public class ViewCounterStatefulBean implements ViewCounter {
     private Integer numberOfViews;
 
     @PostConstruct
     public void init(){
         numberOfViews = 0;
-        System.out.println("Created class "+ getClass().getSimpleName());
+        log.info("Created class {}", getClass().getSimpleName());
     }
 
     @Override
@@ -23,6 +25,6 @@ public class ViewCounterStatefulBean implements ViewCounter {
     @Override
     public void incrementNumberOfViews() {
         numberOfViews++;
-        System.out.println("Views "+getClass().getSimpleName() + " incremented to total of "+ numberOfViews);
+        log.info("Views {} incremented to total of {}",getClass().getSimpleName(),numberOfViews);
     }
 }
