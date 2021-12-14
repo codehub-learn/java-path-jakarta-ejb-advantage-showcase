@@ -1,7 +1,6 @@
 package gr.codelearn.ejbexample.resource;
 
 import gr.codelearn.ejbexample.service.ViewCounter;
-import gr.codelearn.ejbexample.service.impl.ViewCounterStatefulBean;
 
 import javax.ejb.EJB;
 import javax.ws.rs.GET;

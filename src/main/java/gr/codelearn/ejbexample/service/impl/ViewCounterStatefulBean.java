@@ -4,6 +4,10 @@ import gr.codelearn.ejbexample.service.ViewCounter;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.ejb.PostActivate;
+import javax.ejb.PrePassivate;
+import javax.ejb.Remove;
 import javax.ejb.Stateful;
 
 @Stateful
@@ -17,7 +21,23 @@ public class ViewCounterStatefulBean implements ViewCounter {
         log.info("Created class {}", getClass().getSimpleName());
     }
 
+    @PreDestroy
+    public void destroy(){
+        log.info("Destroyed class {}", getClass().getSimpleName());
+    }
+
+    @PostActivate
+    public void postActivate(){
+        log.info("Post activated class {}", getClass().getSimpleName());
+    }
+
+    @PrePassivate
+    public void prePassivate(){
+        log.info("Pre passivate class {}", getClass().getSimpleName());
+    }
+
     @Override
+    @Remove
     public Integer getNumberOfViews() {
         return numberOfViews;
     }
